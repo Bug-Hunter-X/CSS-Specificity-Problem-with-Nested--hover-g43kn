@@ -1,0 +1,21 @@
+The following CSS code snippet demonstrates an issue where the `:hover` pseudo-class on a nested element doesn't work as expected due to specificity issues:
+
+```css
+.outer {
+  background-color: lightgray;
+}
+
+.outer:hover {
+  background-color: lightblue;
+}
+
+.outer .inner {
+  background-color: yellow;
+}
+
+.outer .inner:hover {
+  background-color: lightgreen; /* This is not working */
+}
+```
+
+The expected behavior is that the inner element's background changes to lightgreen on hover.  However, because the `.outer:hover` selector is more specific, it overrides the `.outer .inner:hover` selector, resulting in no visual change on hover for the inner element.
