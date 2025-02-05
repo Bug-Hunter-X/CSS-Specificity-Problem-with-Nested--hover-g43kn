@@ -1,0 +1,50 @@
+Several solutions exist to address the specificity conflict. Here are two options:
+
+**Option 1: Increase Specificity of the inner :hover selector:**
+
+```css
+.outer {
+  background-color: lightgray;
+}
+
+.outer:hover {
+  background-color: lightblue;
+}
+
+.outer .inner {
+  background-color: yellow;
+}
+
+.outer .inner:hover {
+  background-color: lightgreen;
+}
+
+/* Add more specific selector to overcome the specificity of the outer element */
+.outer:hover .inner:hover {
+  background-color: lightgreen; /* Now this works */
+}
+```
+
+**Option 2: Use !important (less recommended):**
+
+While generally discouraged, `!important` can override the specificity:
+
+```css
+.outer {
+  background-color: lightgray;
+}
+
+.outer:hover {
+  background-color: lightblue;
+}
+
+.outer .inner {
+  background-color: yellow;
+}
+
+.outer .inner:hover {
+  background-color: lightgreen !important; /* This will work */
+}
+```
+
+Choosing the best approach depends on context. Increasing specificity directly addresses the issue without resorting to the `!important` hack, which can lead to maintenance issues.
